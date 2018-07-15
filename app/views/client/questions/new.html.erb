@@ -1,0 +1,14 @@
+<%= form_tag "/client/questions", method: :post do %>
+  <div>
+    Tittle: <input type="text" name="text" value="<%= @question['tittle'] %>" />
+  </div>
+  <div>  
+    What is your question?: <textarea name="text" id="text" cols="30" rows="10">
+      <%= @question['text'] %>
+    </textarea>
+  </div>
+  <div>
+    Symptoms: <input type="text" name="symptoms" value="<%= @question['text'] %>"/>
+  </div>
+  <input type="submit" name="" value="Post" />
+<% end %>

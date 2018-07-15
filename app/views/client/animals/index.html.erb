@@ -1,0 +1,9 @@
+<h1>Animals</h1>
+
+<% @animals.each do |animal| %>
+  <h4><a href="/client/animals/<%= animal['id'] %>"><%= animal["name"] %></a>
+  <img src="<%= animal["image_url"] %>">
+<% end %>
+
+</div>
+

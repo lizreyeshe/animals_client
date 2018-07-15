@@ -1,0 +1,8 @@
+
+<h1><%= @question["tittle"] %></h2>
+<h4><%= @question["text"]%></h4>
+
+
+<a href="/client/questions/<%= @question['id'] %>/edit">Edit</a>
+<a href="/client/questions/<%= @question['id'] %>" data-method="delete">Delete</a>
+

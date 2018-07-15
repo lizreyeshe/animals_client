@@ -1,0 +1,10 @@
+<h1><%= @animal['name']%></h1>
+<img src="<%= @animal['image_url']%>">
+
+<% @animal['questions'].each do |question|%>
+  <h2><%= question['tittle']%></h2>
+  <h4><%= question['text']%></h3>
+<%end%>
+
+
+<a href="/client/questions/new">Ask a Question </a>

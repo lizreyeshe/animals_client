@@ -1,0 +1,12 @@
+<%= form_tag "/client/questions/#{@question["id"]}", method: :patch do %>
+  <div>
+    Tittle <input type="text" name="tittle" value="<%= @question["tittle"] %>" />
+  </div>
+  <div>
+    Your question <input type="text" name="text" value="<%= @question["text"] %>" />
+  </div>
+  <div>
+    Symptoms: <input type="text" name="symptoms" value="<%= @question["symptoms"] %>" />
+  </div>
+  <input type="submit" name="" value="Update question"/>
+<% end %>
