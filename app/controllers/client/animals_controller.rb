@@ -6,7 +6,10 @@ class Client::AnimalsController < ApplicationController
     # }
 
     @animals = Unirest.get("http://localhost:3000/api/animals").body 
+    @question = Unirest.get("http://localhost:3000/api/questions").body
     render "index.html.erb"
+
+
   end 
 
   def show 

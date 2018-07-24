@@ -1,20 +1,6 @@
 class Client::QuestionsController < ApplicationController
 
-  # def index 
-  #   # question_params = {
-  #   #   search: params[:search]
-  #   # }
-
-  #   @questions = Unirest.get("http://localhost:3000/api/questions").body
-  #   render 'index.html.erb'
-  # end 
-
   def new 
-    @question = {
-      "tittle" => params[:title],
-      "text" => params[:text],
-      "symptoms" => params[:symptoms]
-    }
     render 'new.html.erb'
   end
 
@@ -22,11 +8,13 @@ class Client::QuestionsController < ApplicationController
     @question = {
       "tittle" => params[:tittle],
       "text" => params[:text],
-      "symptoms" => params[:symptoms]
+      "symptoms" => params[:symptoms],
+      "animal_id" => params[:animal_id],
+      "user_id" => 1
     }
     response = Unirest.post("http://localhost:3000/api/questions", parameters: @question)
-    redirect_to "/client/questions"
-    #HOw can I redirect to the question that was just created?
+    puts response
+    redirect_to "/client/animals/#{params[:question_id]}"
   end 
 
   def show 
@@ -53,7 +41,7 @@ class Client::QuestionsController < ApplicationController
 
   def destroy 
     response = Unirest.delete("http://localhost:3000/api/questions/#{question_id}")
-    redirect_to "/client/animals"
+    redirect_to "/client/questions"
     #find right route to redirect
   end 
 

@@ -2,9 +2,37 @@
 <img src="<%= @animal['image_url']%>">
 
 <% @animal['questions'].each do |question|%>
-  <h2><%= question['tittle']%></h2>
-  <h4><%= question['text']%></h3>
+  <h2><a href="/client/questions/<%=question['id']%>"><%= question["tittle"]%></h2></a>
+  <h3><%= question['text']%></h3>
+  <% question['images'].each do |image|%>
+    <img src="<%= image['image_url']%>">
+  <%end%>
+  <a href="/client/questions/<%= question['id'] %>/edit">Edit</a>
+  <a href="/client/questions/<%= question['id'] %>" data-method="delete">Delete</a>
 <%end%>
 
 
-<a href="/client/questions/new">Ask a Question </a>
+
+
+
+<h1>Ask a question</h1>
+
+<!-- <form action="/client/questions" method="post"> -->
+<%= form_tag "/client/questions", method: :post do %>
+  <input type="hidden" name="animal_id" value="<%= @animal['id'] %>" />
+  <div>  
+  <div>
+    Title: <input type="text" name="tittle" value="" />
+  </div>
+  <div>  
+    What is your question?: <textarea name="text" id="text" cols="30" rows="10">
+    </textarea>
+  </div>
+  <div>
+    Symptoms: <input type="text" name="symptoms" value=""/>
+  </div>
+  <div>
+    Picture: <input type="text" name="image_url" value="" />
+  </div>
+  <input type="submit" name="" value="Post" />
+<% end %>
