@@ -13,11 +13,12 @@
 <h1>What the community says:</h1>
 <% @question["answers"].each do |answer|%>
   <h3><%= answer['text']%></h3>
+  <h4><%= answer['user']%></h4>
 <%end%>
 
 
-
-
+<h1>Collaborate</h1>
+  
 <%= form_tag "/client/answers", method: :post do %>
 <input type="hidden" name="question_id" value="<%= @question['id'] %>" />
   <div>  
